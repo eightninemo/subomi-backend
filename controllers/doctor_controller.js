@@ -30,23 +30,25 @@ const doctorRegister = async (req, res) => {
             })
         }else{
             doctor.save()
-            .then(response => {
-            res.status(200).json({
-                status: true,
-                message: 'User Added Successfully',
-                data: response
-            })
-        }).catch(error => {
-            console.log(error)
-            // res.status(500).json({
-            //     status: false,
-            //     message: 'An error occured: ' + error,
-            //         })
-                })
             }
         })
     })
 }
+
+// doctor.save()
+// .then(response => {
+// res.status(200).json({
+//     status: true,
+//     message: 'User Added Successfully',
+//     data: response
+// })
+// }).catch(error => {
+// console.log(error)
+// res.status(500).json({
+//     status: false,
+//     message: 'An error occured: ' + error,
+//         })
+//     })
 
     const doctorLogin = async (req, res, next) => {
         var username = req.body.username
