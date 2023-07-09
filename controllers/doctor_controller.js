@@ -36,7 +36,7 @@ const doctorRegister = async (req, res) => {
             })
         }).catch(error => {
             res.json({
-                message: 'An error occured: $error'
+                message: error
             })
         })
         }
