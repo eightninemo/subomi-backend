@@ -37,6 +37,11 @@ const doctorRegister = async (req, res) => {
                     message: 'User Added Successfully',
                     data: response
                     })
+                }).catch(error => {
+                    res.status(500).json({
+                        status: false,
+                        message: 'An error occured',
+                        })
                 })
             }
         })
