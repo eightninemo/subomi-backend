@@ -25,17 +25,20 @@ const doctorRegister = async (req, res) => {
         Doctor.findOne({doctorId:userId}).then(user => {
             if(user){
             res.status(404).json({
+                status: false,
                 message: 'user exists'
             })
         }else{
             doctor.save()
             .then(response => {
             res.json({
+                status: true,
                 message: 'User Added Successfully',
                 data: response
             })
         }).catch(error => {
             res.json({
+                status: false,
                 message: error
             })
         })
@@ -53,17 +56,20 @@ const doctorRegister = async (req, res) => {
                 bcrypt.compare(password, user.password, function(err, result){
                     if(err){
                         res.json({
-                            error: err
+                            status: false,
+                            message: err
                         })
                     }
                     if(result){
                     //    let token = jwt.sign({userId: user.userId},'zxcvbnm',{expiresIn: '1h'})
                        res.status(200).json({
+                        status: true,
                         message: 'Login Successful',
-                        token: token
+                        // token: token
                        })
                     }else{
                         res.status(200).json({
+                            status: false,
                             message: 'Invalid Password',
                             
                         })
