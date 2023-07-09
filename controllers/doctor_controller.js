@@ -84,13 +84,13 @@ const doctorRegister = async (req, res) => {
 
 const prescribe = (req, res) => {
     const patientId = req.body.patientId
-    let updatedData = {
+    let updatedData = Medication({
         patientId: req.body.patientId,
         name: req.body.name,
         type: req.body.designation,
         reason: req.body.email,
         dosage: req.body.phone,
-    }
+    })
     Medication.findOneAndUpdate({patentId: patientId}, {$push: {prescriptions: updatedData}})
     .then(response => {
         res.status(200).json({
