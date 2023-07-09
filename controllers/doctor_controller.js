@@ -91,7 +91,7 @@ const prescribe = (req, res) => {
         reason: req.body.email,
         dosage: req.body.phone,
     }
-    Medication.findByIdAndUpdate(patientId, {$push: {patients: updatedData}})
+    Medication.findByOneAndUpdate(patientId, {$push: {patients: updatedData}})
     .then(response => {
         res.status(200).json({
             status: true,
