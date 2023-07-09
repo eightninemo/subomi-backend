@@ -31,15 +31,15 @@ const patientRegister = async (req, res) => {
         }else{
             doctor.save()
             .then(response => {
-            res.json({
+            res.status(200).json({
                 status: true,
                 message: 'User Added Successfully',
                 data: response
             })
         }).catch(error => {
-            res.json({
+            res.status(500).json({
                 status: false,
-                message: 'An error occured: $error'
+                message: 'An error occured:'
             })
         })
         }
