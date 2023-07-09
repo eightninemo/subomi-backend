@@ -49,9 +49,9 @@ const patientRegister = async (req, res) => {
 }
 
     const patientLogin = async (req, res, next) => {
-        var email = req.body.email
+        var username = req.body.username
         var password = req.body.password
-        Patient.findOne({ email })
+        Patient.findOne({username})
         .then(user => {
             if(user){
                 bcrypt.compare(password, user.password, function(err, result){
