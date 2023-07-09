@@ -66,7 +66,7 @@ const patientRegister = async (req, res) => {
                        res.status(200).json({
                         status: true,
                         message: 'Login Successful',
-                        // token: token
+                        data: user
                        })
                     }else{
                         res.status(200).json({
