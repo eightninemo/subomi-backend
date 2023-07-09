@@ -2,6 +2,7 @@ const Doctor = require('../models/doctor_model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { v4: uuidv4 } = require('uuid');
+const Medication = require('../models/medication_dart');
 
 const id = uuidv4();
 
@@ -48,21 +49,6 @@ const doctorRegister = async (req, res) => {
     })
 }
 
-// doctor.save()
-// .then(response => {
-// res.status(200).json({
-//     status: true,
-//     message: 'User Added Successfully',
-//     data: response
-// })
-// }).catch(error => {
-// console.log(error)
-// res.status(500).json({
-//     status: false,
-//     message: 'An error occured: ' + error,
-//         })
-//     })
-
     const doctorLogin = async (req, res, next) => {
         var username = req.body.username
         var password = req.body.password
@@ -95,6 +81,30 @@ const doctorRegister = async (req, res) => {
         })
     }
 
+
+const prescribe = (req, res) => {
+    const patientId = req.body.patientId
+    let updatedData = {
+        patientId: req.body.patientId,
+        name: req.body.name,
+        type: req.body.designation,
+        reason: req.body.email,
+        dosage: req.body.phone,
+    }
+    Medication.findByIdAndUpdate(patientId, {$push: {patients: updatedData}})
+    .then(response => {
+        res.status(200).json({
+            status: true,
+            message: 'employee updated successfully'
+        })
+    }).catch(error => {
+        res.status(500).json({
+            status: false,
+            message: 'An error occured'
+        })
+    })
+}
+
 module.exports = {
-        doctorRegister, doctorLogin
+        doctorRegister, doctorLogin, prescribe
      }

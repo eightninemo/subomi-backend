@@ -79,6 +79,7 @@ const patientRegister = async (req, res) => {
         })
     }
 
+    
 module.exports = {
         patientRegister, patientLogin
      }
