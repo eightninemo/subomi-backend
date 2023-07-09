@@ -37,10 +37,11 @@ const doctorRegister = async (req, res) => {
                 data: response
             })
         }).catch(error => {
-            res.status(500).json({
-                status: false,
-                message: 'An error occured: ' + error,
-                    })
+            console.log(error)
+            // res.status(500).json({
+            //     status: false,
+            //     message: 'An error occured: ' + error,
+            //         })
                 })
             }
         })

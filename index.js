@@ -30,9 +30,6 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-// upload files to database and also uploads folder
-// app.use('/uploads', express.static('uploads'))
-
 
 // server port
 const PORT = process.env.PORT || 3000
