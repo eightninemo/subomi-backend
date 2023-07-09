@@ -19,6 +19,7 @@ const patientRegister = async (req, res) => {
             email: req.body.email,
             username: req.body.username,
             gender: req.body.gender,
+            age: req.body.age,
             address: req.body.address, 
             password: hashedPass
         })
@@ -79,7 +80,7 @@ const patientRegister = async (req, res) => {
         })
     }
 
-    
+
 module.exports = {
         patientRegister, patientLogin
      }
