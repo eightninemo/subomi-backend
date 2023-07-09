@@ -7,6 +7,7 @@ const id = uuidv4();
 
 const doctorRegister = async (req, res) => {
     var userId = id
+    var userName = req.body.name
     bcrypt.hash(req.body.password, 10, function(err, hashedPass){
         if(err){
             res.json({
@@ -22,7 +23,7 @@ const doctorRegister = async (req, res) => {
             address: req.body.address, 
             password: hashedPass
         })
-        Doctor.findOne({doctorId:userId}).then(user => {
+        Doctor.findOne({name:userName}).then(user => {
             if(user){
             res.status(404).json({
                 status: false,
@@ -30,6 +31,13 @@ const doctorRegister = async (req, res) => {
             })
         }else{
             doctor.save()
+            .then(response => {
+                res.status(200).json({
+                    status: true,
+                    message: 'User Added Successfully',
+                    data: response
+                    })
+                })
             }
         })
     })
